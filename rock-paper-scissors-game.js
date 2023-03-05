@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    while (playerScore < 5 && computerScore < 5) {
+    while (playerScore < 3 && computerScore < 3) {
         let playerSelection = prompt("Choose rock, paper, or scissors.");
         playerSelection = playerSelection.toUpperCase();
         if (playerSelection != 'ROCK' && playerSelection != 'PAPER' &&
@@ -43,7 +43,7 @@ function game() {
         }
         console.log(`Player score: ${playerScore}\tComputer score: ${computerScore}`);
     }
-    if (playerScore == 5) {
+    if (playerScore == 3) {
         alert("You win!")
     }
     else {

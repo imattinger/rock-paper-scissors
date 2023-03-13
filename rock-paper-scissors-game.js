@@ -1,5 +1,6 @@
 
 const CHOICES = ['ROCK', 'PAPER', 'SCISSORS'];
+const EMOJI = {'ROCK': '🪨', 'PAPER': '📄', 'SCISSORS': '✂️'};
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
@@ -33,16 +34,16 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
     if (playerSelection == computerSelection) {
-        gameHistoryDisplay.textContent += `Both players choose ${computerSelection}. It's a tie!`;
+        gameHistoryDisplay.textContent += `Both players choose ${EMOJI[computerSelection]}. It's a tie!`;
         return 0;
     }
     if (playerSelection == 'ROCK' && computerSelection == 'PAPER' ||
         playerSelection == 'PAPER' && computerSelection == 'SCISSORS' ||
         playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-            gameHistoryDisplay.textContent += `You lose! ${computerSelection} beats ${playerSelection}.`
+            gameHistoryDisplay.textContent += `You lose! ${EMOJI[computerSelection]} beats ${EMOJI[playerSelection]}.`
             return -1;
     }
-    gameHistoryDisplay.textContent += `You win! ${playerSelection} beats ${computerSelection}.`;
+    gameHistoryDisplay.textContent += `You win! ${EMOJI[playerSelection]} beats ${EMOJI[computerSelection]}.`;
     return 1;
 }
 

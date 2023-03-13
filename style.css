@@ -1,3 +1,35 @@
 * {
     font-family: monospace;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    padding-top: 32px;
+}
+
+.scoreboard {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 96px;
+}
+
+.container.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 8px;
+}
+
+button {
+    font-size: 36px;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+#game-outcome {
+    font-size: 24px;
+    text-align: center;
+    margin: 8px;
+}

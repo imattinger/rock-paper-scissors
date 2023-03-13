@@ -8,6 +8,11 @@ const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
 const gameHistoryDisplay = document.querySelector('#game-history');
 const gameOutcomeDisplay = document.querySelector('#game-outcome');
+let playerScore = 0;
+let computerScore = 0;
+
+// Display rounds on separate lines 
+gameHistoryDisplay.setAttribute('style', 'white-space: pre;');
 
 rockButton.addEventListener('click', () => {
     playRound('ROCK', getComputerChoice());
@@ -32,19 +37,22 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toUpperCase();
+    let currentRound = `${EMOJI[playerSelection]} vs. ${EMOJI[computerSelection]}\t`;
     if (playerSelection == computerSelection) {
-        gameHistoryDisplay.textContent += `Both players choose ${EMOJI[computerSelection]}. It's a tie!`;
-        return 0;
+        currentRound += "It's a tie.";
     }
-    if (playerSelection == 'ROCK' && computerSelection == 'PAPER' ||
-        playerSelection == 'PAPER' && computerSelection == 'SCISSORS' ||
-        playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-            gameHistoryDisplay.textContent += `You lose! ${EMOJI[computerSelection]} beats ${EMOJI[playerSelection]}.`
-            return -1;
+    else if (computerSelection == 'ROCK' && playerSelection == 'PAPER' ||
+        computerSelection == 'PAPER' && playerSelection == 'SCISSORS' ||
+        computerSelection == 'SCISSORS' && playerSelection == 'ROCK') {
+            currentRound += "Player wins."
+            playerScore += 1;
     }
-    gameHistoryDisplay.textContent += `You win! ${EMOJI[playerSelection]} beats ${EMOJI[computerSelection]}.`;
-    return 1;
+    else {
+        currentRound += "Computer wins."
+        computerScore += 1;
+    }
+    gameHistoryDisplay.textContent += currentRound + '\r\n';
+    displayScores(playerScore, computerScore);
 }
 
 function game() {

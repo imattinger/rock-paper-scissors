@@ -1,5 +1,5 @@
 
-const MOVES = ['ROCK', 'PAPER', 'SCISSORS'];
+const CHOICES = ['ROCK', 'PAPER', 'SCISSORS'];
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
@@ -27,22 +27,22 @@ function displayScores(playerScore, computerScore) {
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
-    return MOVES[choice];
+    return CHOICES[choice];
 }
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
     if (playerSelection == computerSelection) {
-        gameHistoryDisplay.textContent += `\nBoth players choose ${computerSelection}. It's a tie!`;
+        gameHistoryDisplay.textContent += `Both players choose ${computerSelection}. It's a tie!`;
         return 0;
     }
     if (playerSelection == 'ROCK' && computerSelection == 'PAPER' ||
         playerSelection == 'PAPER' && computerSelection == 'SCISSORS' ||
         playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-            gameHistoryDisplay.textContent += `\nYou lose! ${computerSelection} beats ${playerSelection}.`
+            gameHistoryDisplay.textContent += `You lose! ${computerSelection} beats ${playerSelection}.`
             return -1;
     }
-    gameHistoryDisplay.textContent += `\nYou win! ${playerSelection} beats ${computerSelection}.`;
+    gameHistoryDisplay.textContent += `You win! ${playerSelection} beats ${computerSelection}.`;
     return 1;
 }
 

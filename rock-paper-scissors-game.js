@@ -39,8 +39,9 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // If game over, do nothing
-    if (playerScore >= 3 || computerScore >= 3) return;
+    if (playerScore >= 5 || computerScore >= 5) return;
 
+    // Start new round
     roundCount += 1;
     let currentRound = `Round ${roundCount}  \t${EMOJI[playerSelection]} vs. ${EMOJI[computerSelection]}\t`;
     

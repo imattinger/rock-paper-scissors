@@ -60,10 +60,10 @@ function playRound(playerSelection, computerSelection) {
     }
     gameHistoryDisplay.textContent += currentRound + '\r\n';
     displayScores(playerScore, computerScore);
-    if (playerScore == 3){
+    if (playerScore == 5){
         gameOutcomeDisplay.textContent = "Player wins!";
     }
-    if (computerScore == 3) {
+    if (computerScore == 5) {
         gameOutcomeDisplay.textContent = "Computer wins!";
     }
 }

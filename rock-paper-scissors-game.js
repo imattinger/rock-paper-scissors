@@ -3,6 +3,8 @@ const MOVES = ['ROCK', 'PAPER', 'SCISSORS'];
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
+const playerScoreDisplay = document.querySelector('#player-score');
+const computerScoreDisplay = document.querySelector('#computer-score');
 
 rockButton.addEventListener('click', () => {
     playRound('ROCK', getComputerChoice());
@@ -15,6 +17,11 @@ paperButton.addEventListener('click', () => {
 scissorsButton.addEventListener('click', () => {
     playRound('SCISSORS', getComputerChoice());
 });
+
+function displayScores(playerScore, computerScore) {
+    playerScoreDisplay.textContent = "Player: " + playerScore;
+    computerScoreDisplay.textContent = "Computer: " + computerScore;
+}
 
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3)
@@ -65,5 +72,7 @@ function game() {
         alert("Computer wins!")
     }
 }
+
+displayScores(3, 5);
 
 // game();

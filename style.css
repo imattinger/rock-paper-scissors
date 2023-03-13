@@ -8,6 +8,13 @@ body {
     padding-top: 32px;
 }
 
+.container.game {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .scoreboard {
     font-size: 24px;
     display: flex;
@@ -19,13 +26,21 @@ body {
     display: flex;
     justify-content: center;
     gap: 24px;
-    margin: 8px;
+    margin: 16px;
 }
 
 button {
     font-size: 36px;
     padding: 8px 16px;
     border-radius: 8px;
+}
+
+.game-display {
+    width: 320px;
+}
+
+#game-explanation {
+    margin: 8px -8px;
 }
 
 #game-outcome {

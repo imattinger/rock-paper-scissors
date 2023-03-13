@@ -19,7 +19,7 @@ body {
     font-size: 24px;
     display: flex;
     justify-content: center;
-    gap: 96px;
+    gap: 64px;
 }
 
 .container.buttons {

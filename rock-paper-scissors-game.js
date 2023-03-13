@@ -10,6 +10,7 @@ const gameHistoryDisplay = document.querySelector('#game-history');
 const gameOutcomeDisplay = document.querySelector('#game-outcome');
 let playerScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 
 // Display rounds on separate lines 
 gameHistoryDisplay.setAttribute('style', 'white-space: pre;');
@@ -37,7 +38,12 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let currentRound = `${EMOJI[playerSelection]} vs. ${EMOJI[computerSelection]}\t`;
+    // If game over, do nothing
+    if (playerScore >= 3 || computerScore >= 3) return;
+
+    roundCount += 1;
+    let currentRound = `Round ${roundCount}  \t${EMOJI[playerSelection]} vs. ${EMOJI[computerSelection]}\t`;
+    
     if (playerSelection == computerSelection) {
         currentRound += "It's a tie.";
     }
@@ -53,35 +59,10 @@ function playRound(playerSelection, computerSelection) {
     }
     gameHistoryDisplay.textContent += currentRound + '\r\n';
     displayScores(playerScore, computerScore);
-}
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    while (playerScore < 3 && computerScore < 3) {
-        let playerSelection = prompt("Choose rock, paper, or scissors.");
-        playerSelection = playerSelection.toUpperCase();
-        if (playerSelection != 'ROCK' && playerSelection != 'PAPER' &&
-        playerSelection != 'PAPER') {
-            console.log("Invalid input. You get to use rock.")
-            playerSelection = 'ROCK';
-        }
-        computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection);
-        if (result < 0) {
-            computerScore += 1;
-        }
-        if (result > 0) {
-            playerScore += 1;
-        }
-        console.log(`Player score: ${playerScore}\tComputer score: ${computerScore}`);
+    if (playerScore == 3){
+        gameOutcomeDisplay.textContent = "Player wins!";
     }
-    if (playerScore == 3) {
-        alert("You win!")
-    }
-    else {
-        alert("Computer wins!")
+    if (computerScore == 3) {
+        gameOutcomeDisplay.textContent = "Computer wins!";
     }
 }
-
-// game();
